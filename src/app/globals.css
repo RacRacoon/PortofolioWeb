@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050508;
+  --surface: #0c0c14;
+  --surface-2: #12121d;
+  --foreground: #f2f1f8;
+  --muted: #9a97b3;
+  --border: #232235;
+  --purple: #a855f7;
+  --purple-dim: #7c3aed;
+  --yellow: #facc15;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-purple: var(--purple);
+  --color-purple-dim: var(--purple-dim);
+  --color-yellow: var(--yellow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 85, 247, 0.18), transparent),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+  background-position: 0 0, center, center;
+}
+
+::selection {
+  background: var(--purple);
+  color: #0a0a0a;
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.55);
+}
+
+.text-glow-yellow {
+  text-shadow: 0 0 18px rgba(250, 204, 21, 0.45);
+}
+
+.card-glow {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Tactile click feedback for buttons/links: quick press-down, springy release */
+.btn-tactile {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-tactile:active {
+  transform: scale(0.94);
+  transition-duration: 0.08s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-tactile,
+  .btn-tactile:active {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transform: none;
+  }
+}
+
+.card-glow:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.25), 0 16px 48px -16px rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism: translucent, blurred panels over the dark grid/glow background */
+.glass {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(168, 85, 247, 0.05)
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass:hover {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(168, 85, 247, 0.09)
+  );
+}
+
+.glass-strong {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(168, 85, 247, 0.07) 50%,
+    rgba(250, 204, 21, 0.05)
+  );
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Soft blurred gradient orbs used as ambient background accents */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.45), transparent 70%);
+}
+
+.orb-yellow {
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.3), transparent 70%);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -24px) scale(1.06); }
+}
+
+.orb-float {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+.scanline {
+  position: relative;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(250, 204, 21, 0.4), transparent);
+  height: 2px;
+  animation: scan 5s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
