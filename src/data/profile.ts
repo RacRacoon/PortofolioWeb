@@ -250,10 +250,3 @@ export const education = {
     "Anggota Laboratorium B401 — Robotics and Intelligent System, Gedung B Elektro",
   ],
 };
-
-export const misc = [
-  {
-    title: "Presentasi Robotika",
-    detail: "Co-presenter konsep Sim2Real dan Real2Sim2Real bersama Edward Natasaputra.",
-  },
-];

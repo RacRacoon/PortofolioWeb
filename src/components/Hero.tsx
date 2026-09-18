@@ -55,7 +55,11 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative order-1 mx-auto shrink-0 sm:order-2 sm:mx-0">
+        <Reveal
+          variant="scale"
+          delay={150}
+          className="relative order-1 mx-auto shrink-0 sm:order-2 sm:mx-0"
+        >
           <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-purple to-yellow opacity-60 blur-lg" />
           <div className="relative h-72 w-56 overflow-hidden rounded-2xl border border-white/15 sm:h-96 sm:w-72">
             <Image
@@ -67,7 +71,7 @@ export default function Hero() {
               className="h-full w-full object-cover"
             />
           </div>
-        </div>
+        </Reveal>
       </Reveal>
     </section>
   );

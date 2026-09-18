@@ -11,6 +11,7 @@ export default function Experience() {
           <Reveal
             key={exp.title + exp.org}
             delay={i * 80}
+            variant={i % 2 === 0 ? "left" : "right"}
             className={`glass card-glow rounded-xl p-6 ${
               exp.images ? "grid gap-6 sm:grid-cols-[minmax(0,220px)_1fr]" : ""
             }`}

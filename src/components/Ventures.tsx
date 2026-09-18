@@ -8,7 +8,7 @@ export default function Ventures() {
       <p className="mb-8 -mt-4 text-sm text-muted">Di bawah entitas B401 Lab</p>
       <div className="grid gap-5 sm:grid-cols-2">
         {ventures.map((v, i) => (
-          <Reveal key={v.org} delay={i * 80}>
+          <Reveal key={v.org} delay={i * 80} variant={i % 2 === 0 ? "left" : "right"}>
           <article
             className="glass card-glow h-full rounded-xl p-6"
           >

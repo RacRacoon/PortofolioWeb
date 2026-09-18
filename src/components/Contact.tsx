@@ -12,7 +12,7 @@ export default function Contact() {
         className="orb orb-yellow orb-float right-1/4 bottom-0 h-56 w-56"
         style={{ animationDelay: "-6s" }}
       />
-      <Reveal className="glass-strong relative z-10 rounded-2xl p-10 text-center sm:p-16">
+      <Reveal variant="scale" className="glass-strong relative z-10 rounded-2xl p-10 text-center sm:p-16">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-yellow">
           06 · Kontak
         </p>

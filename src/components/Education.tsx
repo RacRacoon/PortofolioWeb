@@ -1,12 +1,12 @@
 import Section from "./Section";
 import Reveal from "./Reveal";
-import { education, organizations, misc } from "@/data/profile";
+import { education, organizations } from "@/data/profile";
 
 export default function Education() {
   return (
     <Section id="education" index="05" title="Pendidikan & Organisasi">
       <div className="grid gap-5 sm:grid-cols-2">
-        <Reveal className="glass card-glow rounded-xl p-6">
+        <Reveal variant="left" className="glass card-glow rounded-xl p-6">
           <h3 className="text-lg font-medium text-foreground">{education.school}</h3>
           <p className="mt-1 text-sm text-purple">
             {education.degree} · NRP {education.nrp}
@@ -22,7 +22,7 @@ export default function Education() {
         </Reveal>
 
         {organizations.map((org, oi) => (
-          <Reveal key={org.org} delay={(oi + 1) * 80} className="glass card-glow rounded-xl p-6">
+          <Reveal key={org.org} delay={(oi + 1) * 80} variant="right" className="glass card-glow rounded-xl p-6">
             <h3 className="text-lg font-medium text-foreground">{org.org}</h3>
             <p className="mt-1 font-mono text-xs text-muted">
               {org.location} · {org.duration}
@@ -51,17 +51,6 @@ export default function Education() {
           </Reveal>
         ))}
       </div>
-
-      {misc.length > 0 && (
-        <Reveal className="glass card-glow mt-5 rounded-xl p-6">
-          {misc.map((m) => (
-            <div key={m.title}>
-              <h3 className="text-sm font-medium text-foreground">{m.title}</h3>
-              <p className="mt-1 text-sm text-muted">{m.detail}</p>
-            </div>
-          ))}
-        </Reveal>
-      )}
     </Section>
   );
 }

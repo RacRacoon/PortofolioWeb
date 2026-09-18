@@ -44,6 +44,7 @@ export default function Projects() {
           <Reveal
             key={p.title}
             delay={(i % 2) * 80}
+            variant="scale"
             className={p.images ? "sm:col-span-2" : undefined}
           >
             <article

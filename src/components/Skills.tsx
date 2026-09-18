@@ -7,7 +7,7 @@ export default function Skills() {
     <Section id="skills" index="04" title="Keahlian">
       <div className="grid gap-5 sm:grid-cols-2">
         {skills.map((s, i) => (
-          <Reveal key={s.group} delay={(i % 2) * 80}>
+          <Reveal key={s.group} delay={(i % 2) * 80 + Math.floor(i / 2) * 60} variant="scale">
             <div className="glass card-glow rounded-xl p-5">
               <h3 className="font-mono text-xs uppercase tracking-wider text-purple">
                 {s.group}
