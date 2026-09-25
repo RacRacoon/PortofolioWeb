@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute right-[22%] bottom-[10%] hidden h-48 w-72 rounded-[3rem] border border-white/10 lg:block" />
 
       <div className="relative z-10 mx-auto grid min-h-svh max-w-6xl lg:h-svh items-center gap-6 px-6 pb-10 pt-32 lg:pt-24 lg:grid-cols-[1.35fr_1fr] lg:gap-10">
-        <div className="order-2 lg:order-1">
+        <div className="order-2 text-center lg:order-1 lg:text-left">
           <Reveal>
             <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-purple">
               <span className="scanline mr-2 inline-block h-2 w-2 rounded-full bg-yellow align-middle" />
@@ -36,10 +36,10 @@ export default function Hero() {
               Embedded <span className="text-purple">&#10035;</span> IoT{" "}
               <span className="text-purple">&#10035;</span> Machine Learning
             </p>
-            <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted">
+            <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted lg:mx-0">
               {profile.summary}
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <a
                 href="#projects"
                 className="btn-tactile rounded-full bg-yellow px-5 py-2.5 text-sm font-semibold text-[#07070c] hover:bg-purple hover:text-white"
