@@ -15,7 +15,17 @@ export default function Education() {
             {education.affiliations.map((a, i) => (
               <li key={i} className="flex gap-2">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-yellow" />
-                <span>{a}</span>
+                <div>
+                  <span>{a.title}</span>
+                  <ul className="mt-2 space-y-1.5">
+                    {a.details.map((d) => (
+                      <li key={d} className="flex gap-2 text-foreground/90">
+                        <span className="mt-2 h-px w-3 shrink-0 bg-purple" />
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             ))}
           </ul>
@@ -39,7 +49,7 @@ export default function Education() {
                     {r.skills.map((s) => (
                       <span
                         key={s}
-                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[11px] text-muted backdrop-blur-sm"
+                        className="rounded-full border border-purple/30 bg-purple/10 px-2.5 py-1 font-mono text-[11px] text-muted backdrop-blur-sm"
                       >
                         {s}
                       </span>

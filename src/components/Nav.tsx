@@ -1,5 +1,4 @@
 const links = [
-  { href: "#about", label: "Tentang" },
   { href: "#experience", label: "Pengalaman" },
   { href: "#projects", label: "Proyek" },
   { href: "#ventures", label: "Usaha" },
@@ -10,30 +9,41 @@ const links = [
 
 export default function Nav() {
   return (
-    <header className="glass sticky top-0 z-50 border-x-0 border-t-0">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <header className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-background/95 via-background/60 to-transparent backdrop-blur-[2px]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <a
           href="#top"
-          className="font-mono text-sm tracking-widest text-foreground/90 hover:text-yellow transition-colors"
+          className="font-label text-2xl text-foreground transition-colors hover:text-yellow"
         >
           SSR<span className="text-purple">_</span>
         </a>
-        <ul className="hidden gap-6 text-sm text-muted sm:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="hover:text-yellow transition-colors">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+
+        <nav
+          aria-label="Navigasi utama"
+          className="order-3 w-full overflow-x-auto rounded-full border border-white/15 bg-black/60 px-2 backdrop-blur-xl lg:order-none lg:w-auto"
+        >
+          <ul className="flex min-w-max items-center justify-center gap-1 py-1.5">
+            {links.map((l, i) => (
+              <li key={l.href} className="flex items-center gap-1">
+                {i > 0 && <span className="text-xs text-purple">&#10035;</span>}
+                <a
+                  href={l.href}
+                  className="font-label whitespace-nowrap rounded-full px-3 py-1 text-base text-foreground/85 transition-colors hover:text-yellow"
+                >
+                  <span className="text-yellow">{String(i + 1).padStart(2, "0")}.</span> {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <a
           href="#contact"
-          className="btn-tactile rounded-full border border-purple/50 px-4 py-1.5 text-xs text-purple hover:bg-purple hover:text-black sm:hidden"
+          className="btn-tactile font-label justify-self-end rounded-lg border border-white/20 bg-black/40 px-5 py-2 text-base text-foreground backdrop-blur-md hover:border-yellow hover:text-yellow"
         >
-          Kontak
+          Say hello
         </a>
-      </nav>
+      </div>
     </header>
   );
 }

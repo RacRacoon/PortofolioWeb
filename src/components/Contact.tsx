@@ -5,18 +5,18 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative mx-auto max-w-5xl overflow-hidden px-6 py-20 sm:py-28"
+      className="relative mx-auto flex min-h-svh max-w-5xl items-center overflow-hidden px-6 pb-16 pt-32 lg:pt-24"
     >
       <div className="orb orb-purple orb-float left-1/4 top-0 h-64 w-64" />
       <div
         className="orb orb-yellow orb-float right-1/4 bottom-0 h-56 w-56"
         style={{ animationDelay: "-6s" }}
       />
-      <Reveal variant="scale" className="glass-strong relative z-10 rounded-2xl p-10 text-center sm:p-16">
+      <Reveal variant="scale" className="glass-strong relative z-10 w-full rounded-2xl p-10 text-center sm:p-16">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-yellow">
           06 · Kontak
         </p>
-        <h2 className="mt-4 text-2xl font-semibold text-foreground text-glow-purple sm:text-4xl">
+        <h2 className="mt-4 text-2xl font-semibold text-foreground sm:text-4xl">
           Mari terhubung
         </h2>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted">

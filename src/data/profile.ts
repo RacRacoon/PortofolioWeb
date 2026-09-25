@@ -13,6 +13,7 @@ export const profile = {
 };
 
 export type Experience = {
+  summary: string;
   title: string;
   org: string;
   location?: string;
@@ -27,6 +28,8 @@ export const experience: Experience[] = [
     org: "ACW Lighting Engineering",
     location: "Surabaya",
     period: "Sejak Juli 2026",
+    summary:
+      "Menulis firmware NEMA, controller lampu dan soket pintar, untuk MCU clone APM32F103CB. Memindahkan proyek ke VS Code dengan konfigurasi debug sendiri, memetakan perilaku dimmer 0-10 V lewat pengujian di board, lalu menambah relay 10 A, auto-dimming LDR, sensor SHT3x, GSM, dan deteksi overcurrent dari power meter.",
     bullets: [
       "Mengembangkan firmware controller lampu/soket pintar \"NEMA\" di atas MCU APM32F103CB (clone GigaDevice/Geehy dari STM32F103CB) — meng-convert proyek dari toolchain STM32CubeIDE ke EIDE (VS Code) dengan konfigurasi OpenOCD + ST-Link V2 khusus karena chip-nya bukan silikon ST resmi.",
       "Reverse-engineer perilaku elektrik board yang tidak terdokumentasi resmi: tahap dimmer 0-10 V yang opto-coupled (lambat mengikuti perubahan cepat, dan kadang terbalik polaritasnya) hanya bisa dipetakan lewat pengujian langsung, bukan datasheet.",
@@ -40,10 +43,13 @@ export const experience: Experience[] = [
   {
     title: "Project Manager",
     org: "Digital Care Indonesia / Digital Care Foundation / Reparium Tech",
-    period: "Rentang tanggal belum dilengkapi",
+    period: "Sejak Maret 2026",
+    summary:
+      "Menutup 2 proyek belasan juta rupiah dengan Pusdiklat PAL Tekno. Memilih teknisi yang cocok untuk setiap kendala dan permintaan pelanggan, dan menjalankan workshop dengan dana terbatas lewat prioritas biaya dan pembagian tugas.",
     bullets: [
       "Berhasil closing 2 proyek senilai belasan juta rupiah ke Pusdiklat PAL Tekno.",
-      "Detail lingkup kerja lainnya belum tercatat — lengkapi sendiri sebelum dipakai di portofolio.",
+      "Memetakan setiap kendala dan permintaan pelanggan ke teknisi yang paling sesuai, sehingga layanan tetap personal dan solusinya tepat sasaran.",
+      "Menjalankan workshop dengan dana terbatas: menyusun prioritas biaya dan pembagian tugas agar hasil tetap maksimal.",
     ],
     images: [
       { src: "/experience/pm-reparium/pusdiklat-pal.jpg", alt: "Meeting presentasi proyek ke Pusdiklat PAL Tekno" },
@@ -85,6 +91,9 @@ export const ventures: Venture[] = [
 ];
 
 export type Project = {
+  hidden?: boolean;
+  name: string;
+  tagline: string;
   title: string;
   period?: string;
   category: "embedded" | "ml-ai" | "cv";
@@ -95,6 +104,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "NEMA",
+    tagline: "Firmware controller lampu dan soket pintar di atas MCU clone APM32F103CB.",
     title:
       "NEMA — Firmware Controller Lampu/Soket Pintar (APM32F103CB)",
     period: "Sejak Juli 2026 · ACW Lighting Engineering",
@@ -111,6 +122,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "MEDISYNC",
+    tagline: "Smart sleeve pemantau kesehatan lansia dengan deteksi jatuh berbasis 1D-CNN.",
     title: "MEDISYNC — Smart Sleeve untuk Monitoring Kesehatan Lansia",
     category: "embedded",
     tags: ["ESP32", "mmWave Radar", "MAX30102", "GPS", "1D-CNN", "TinyML"],
@@ -127,6 +140,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "TurtleBot3 SLAM",
+    tagline: "Simulasi robotika dan pemetaan lingkungan dengan ROS 2 Humble.",
     title: "TurtleBot3 Robotics Simulation & SLAM dengan ROS 2 Humble",
     period: "Mei 2026 – Jun 2026 · Terkait dengan ITS",
     category: "embedded",
@@ -141,6 +156,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "ATM Security",
+    tagline: "Verifikasi wajah terlihat dengan OWL-ViT: akurasi 95%, sekitar 0,2 detik per gambar.",
     title: "AI-Powered ATM Security System — Face Visibility Detection (OWL-ViT)",
     period: "Mei 2026 – Jun 2026 · Terkait dengan ITS",
     category: "cv",
@@ -156,6 +173,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Electrical Safety AI",
+    tagline: "Monitoring dan proteksi beban listrik secara real-time dengan klasifikasi KNN.",
     title: "AI-Driven Electrical Safety and Load Classification System",
     period: "Okt 2025 – Des 2025 · Terkait dengan ITS",
     category: "embedded",
@@ -171,6 +190,8 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Self Diagnose GERD",
+    tagline: "Diagnosis awal GERD dan dispepsia dari keluhan pasien lewat web.",
     title: "Web-Based Self Diagnose System for GERD and Dyspepsia Symptoms",
     period: "Nov 2025 – Jan 2026 · Terkait dengan ITS",
     category: "ml-ai",
@@ -184,6 +205,9 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Tugas Akhir",
+    hidden: true,
+    tagline: "CNN dengan aktivasi PReLU untuk mengklasifikasikan perilaku pengemudi agresif.",
     title: "Tugas Akhir — Klasifikasi Perilaku Pengemudi Agresif dengan CNN + PReLU",
     category: "ml-ai",
     tags: ["CNN", "PReLU", "Time-series", "BeamNG.drive"],
@@ -194,6 +218,9 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Eksplorasi Embedded & IoT",
+    hidden: true,
+    tagline: "KAPAL_ANN, smart_lights, sistem keselamatan hiking LoRa, dan proyek lainnya.",
     title: "Proyek & Eksplorasi Embedded / IoT Lainnya",
     category: "embedded",
     tags: ["ESP32", "Flask", "Node-RED", "PostgreSQL", "LoRa", "BK7231N"],
@@ -247,6 +274,13 @@ export const education = {
   degree: "S1 Teknik Komputer",
   nrp: "5024231009",
   affiliations: [
-    "Anggota Laboratorium B401 — Robotics and Intelligent System, Gedung B Elektro",
+    {
+      title: "Anggota Laboratorium B401 — Robotics and Intelligent System, Gedung B Elektro",
+      details: [
+        "Asisten Praktikum Rangkaian Digital",
+        "Asisten Praktikum Workshop Telematika",
+        "Asisten Praktikum Dasar Pemrograman",
+      ],
+    },
   ],
 };

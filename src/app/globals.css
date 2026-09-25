@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050508;
-  --surface: #0c0c14;
-  --surface-2: #12121d;
-  --foreground: #f2f1f8;
-  --muted: #9a97b3;
-  --border: #232235;
+  --background: #07070c;
+  --surface: #0e0e17;
+  --surface-2: #151522;
+  --foreground: #eeedf5;
+  --muted: #a3a0b8;
+  --border: #26243a;
   --purple: #a855f7;
   --purple-dim: #7c3aed;
   --yellow: #facc15;
@@ -26,6 +26,68 @@
   --font-mono: var(--font-geist-mono);
 }
 
+h1, h2, h3 {
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1, h2 {
+  font-family: var(--font-wide), var(--font-display), sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+/* Scroll cover for project cards: solid panel wipes off to the right as the card enters view */
+.card-cover {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.card-cover[data-in="true"] {
+  clip-path: inset(0 0 0 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-cover {
+    transition: none;
+  }
+}
+
+/* Tint over project photos: wipes away right to left on hover, revealing the photo */
+.card-tint {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+@media (hover: hover) {
+  .group:hover .card-tint,
+  .group:focus-within .card-tint {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-tint {
+    transition: none;
+  }
+}
+
+.font-wide {
+  font-family: var(--font-wide), var(--font-display), sans-serif;
+}
+
+.font-label {
+  font-family: var(--font-label), var(--font-display), sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@keyframes nudge-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
 * {
   border-color: var(--border);
 }
@@ -33,7 +95,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -47,24 +109,16 @@ body {
   color: var(--foreground);
   overflow-x: clip;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 85, 247, 0.18), transparent),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    radial-gradient(ellipse 70% 45% at 50% -10%, rgba(168, 85, 247, 0.16), transparent),
+    linear-gradient(rgba(168, 85, 247, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.055) 1px, transparent 1px);
   background-size: auto, 48px 48px, 48px 48px;
   background-position: 0 0, center, center;
 }
 
 ::selection {
-  background: var(--purple);
-  color: #0a0a0a;
-}
-
-.text-glow-purple {
-  text-shadow: 0 0 24px rgba(168, 85, 247, 0.55);
-}
-
-.text-glow-yellow {
-  text-shadow: 0 0 18px rgba(250, 204, 21, 0.45);
+  background: var(--yellow);
+  color: #07070c;
 }
 
 .card-glow {
@@ -91,43 +145,43 @@ body {
 }
 
 .card-glow:hover {
-  border-color: rgba(168, 85, 247, 0.55);
-  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.25), 0 16px 48px -16px rgba(168, 85, 247, 0.4);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 12px 36px -16px rgba(168, 85, 247, 0.4);
   transform: translateY(-2px);
 }
 
-/* Glassmorphism: translucent, blurred panels over the dark grid/glow background */
+/* Glassmorphism: translucent panels with a hairline border */
 .glass {
   background: linear-gradient(
     155deg,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02) 45%,
     rgba(168, 85, 247, 0.05)
   );
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .glass:hover {
   background: linear-gradient(
     155deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.03) 40%,
-    rgba(168, 85, 247, 0.09)
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(168, 85, 247, 0.08)
   );
 }
 
 .glass-strong {
   background: linear-gradient(
     155deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(168, 85, 247, 0.07) 50%,
-    rgba(250, 204, 21, 0.05)
+    rgba(255, 255, 255, 0.07),
+    rgba(168, 85, 247, 0.07) 55%,
+    rgba(250, 204, 21, 0.04)
   );
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(250, 204, 21, 0.28);
 }
 
 /* Soft blurred gradient orbs used as ambient background accents */
@@ -140,11 +194,11 @@ body {
 }
 
 .orb-purple {
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.45), transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.32), transparent 70%);
 }
 
 .orb-yellow {
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.2), transparent 70%);
 }
 
 @keyframes float-slow {
@@ -165,7 +219,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(250, 204, 21, 0.4), transparent);
+  background: linear-gradient(180deg, transparent, rgba(250, 204, 21, 0.5), transparent);
   height: 2px;
   animation: scan 5s linear infinite;
 }

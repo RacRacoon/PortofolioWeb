@@ -16,7 +16,7 @@ export default function Skills() {
                 {s.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-foreground/90 backdrop-blur-sm"
+                    className="rounded-full border border-purple/30 bg-purple/10 px-3 py-1 text-xs text-foreground/90 backdrop-blur-sm"
                   >
                     {item}
                   </span>
